@@ -25,7 +25,7 @@ var performOperation = (clickObj) => {
     switch (operator) {
         case '+':
             pendingVal = displayVal;
-            displayVal = pendingVal;
+            displayVal = "0";
             displayValElement.innerText = displayVal;
             evalStringArray.push(pendingVal);
             evalStringArray.push('+');
@@ -35,7 +35,7 @@ var performOperation = (clickObj) => {
             pendingVal = displayVal;
             displayVal = "0";
             displayValElement.innerText = displayVal;
-            evalStringArray.push(pendingVal);
+            evalStringArray.push(pendingVal);   
             evalStringArray.push('-');
             break;
 
@@ -44,14 +44,13 @@ var performOperation = (clickObj) => {
             displayVal = "0";
             displayValElement.innerText = displayVal;
             evalStringArray.push(pendingVal);
-            evalStringArray.push('*');
             break;
 
         case '÷':
             pendingVal = displayVal;
             displayVal = "0";
             displayValElement.innerText = displayVal;
-            evalStringArray.push(pendingVal);
+            evalStringArray.push(pendingVal);    
             evalStringArray.push('/');
             break;
 
