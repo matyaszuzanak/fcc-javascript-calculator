@@ -1,8 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { exec } from 'child_process';
-
 
 var oneBtn = document.getElementById("one");
 var twoBtn = document.getElementById("two");
@@ -74,8 +72,8 @@ var performOperation = (clickObj) => {
   
     case '=':
       evalStringArray.push(displayVal);
-      var evaluation = exec(evalStringArray.join(" "));
-      displayVal = evaluation + " ";
+      var evaluation = eval(evalStringArray.join(' '));
+      displayVal = evaluation + '';
       displayValElement.innerText = displayVal;
       evalStringArray = [];
       break;
