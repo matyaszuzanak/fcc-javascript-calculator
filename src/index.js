@@ -19,15 +19,13 @@ var updateDisplayVal = (clickObj) => {
     displayValElement.innerText = displayVal;
 }
 
-console.log(displayVal);
-
 var performOperation = (clickObj) => {
     var operator = clickObj.target.innerText;
 
     switch (operator) {
         case '+':
             pendingVal = displayVal;
-            displayVal = "0";
+            displayVal = pendingVal;
             displayValElement.innerText = displayVal;
             evalStringArray.push(pendingVal);
             evalStringArray.push('+');
