@@ -2,6 +2,7 @@ var decimalBtn = document.getElementById("decimal");
 var clearBtn = document.getElementById("clear");
 var backspaceBtn = document.getElementById("calc-backspace");
 var displayValElement = document.getElementById("display");
+var operatorBtn = document.getElementById("calc-btn-operator");
 
 var displayVal = "0";
 var pendingVal;
@@ -43,20 +44,21 @@ var performOperation = (clickObj) => {
             pendingVal = displayVal;
             displayVal = "0";
             displayValElement.innerText = displayVal;
-            evalStringArray.push(pendingVal);
+            evalStringArray.push(pendingVal);    
+            evalStringArray.push('*');
             break;
 
         case '÷':
             pendingVal = displayVal;
             displayVal = "0";
             displayValElement.innerText = displayVal;
-            evalStringArray.push(pendingVal);    
+            evalStringArray.push(pendingVal); 
             evalStringArray.push('/');
             break;
 
         case '=':
             evalStringArray.push(displayVal);
-            let evaluation = eval(evalStringArray.join(' '));
+            let evaluation = evalStringArray.join(' ');
             displayVal = evaluation + '';
             displayValElement.innerText = displayVal;
             evalStringArray = [];
@@ -95,4 +97,10 @@ decimalBtn.onclick = () => {
     if (!displayVal.includes("."))
         displayVal += ".";
     displayValElement.innerText = displayVal;
+}
+
+operatorBtn.onclick = () => {
+    let lengthOfDisplayVal = displayVal.length; 
+    if (displayVal[displayVal.length - 1] === "+" || "-" || "*" || "/")
+        displayVal = displayVal.slice(0, lengthOfDisplayVal - 1);
 }
