@@ -25,7 +25,7 @@ var performOperation = (clickObj) => {
     switch (operator) {
         case '+':
             pendingVal = displayVal;
-            displayVal = "";
+            displayVal = "0"
             displayValElement.innerText = displayVal;
             evalStringArray.push(pendingVal);
             evalStringArray.push('+');
@@ -33,7 +33,7 @@ var performOperation = (clickObj) => {
 
         case '-':
             pendingVal = displayVal;
-            displayVal = "";
+            displayVal = "0";
             displayValElement.innerText = displayVal;
             evalStringArray.push(pendingVal);
             evalStringArray.push('-');
@@ -41,7 +41,7 @@ var performOperation = (clickObj) => {
 
         case 'x':
             pendingVal = displayVal;
-            displayVal = "";
+            displayVal = "0";
             displayValElement.innerText = displayVal;
             evalStringArray.push(pendingVal);
             evalStringArray.push('*');
@@ -49,7 +49,7 @@ var performOperation = (clickObj) => {
 
         case '÷':
             pendingVal = displayVal;
-            displayVal = "";
+            displayVal = "0";
             displayValElement.innerText = displayVal;
             evalStringArray.push(pendingVal);
             evalStringArray.push('/');
@@ -96,4 +96,9 @@ decimalBtn.onclick = () => {
     if (!displayVal.includes("."))
         displayVal += ".";
     displayValElement.innerText = displayVal;
+}
+
+calcOperatorBtns.onclick = () => {
+    if (evalStringArray.includes("+" || "-" || "*" || "/", -1))
+        evalStringArray = evalStringArray.slice(0, evalStringArray - 1);
 }
