@@ -2,14 +2,13 @@ var decimalBtn = document.getElementById("decimal");
 var clearBtn = document.getElementById("clear");
 var backspaceBtn = document.getElementById("calc-backspace");
 var displayValElement = document.getElementById("display");
-var operatorBtn = document.getElementById("calc-btn-operator");
+
+var calcNumBtns = document.getElementsByClassName("calc-btn-num");
+var calcOperatorBtns = document.getElementsByClassName("calc-btn-operator");
 
 var displayVal = "0";
 var pendingVal;
 var evalStringArray = [];
-
-var calcNumBtns = document.getElementsByClassName("calc-btn-num");
-var calcOperatorBtns = document.getElementsByClassName("calc-btn-operator");
 
 var updateDisplayVal = (clickObj) => {
     var btnText = clickObj.target.innerText;
@@ -36,7 +35,7 @@ var performOperation = (clickObj) => {
             pendingVal = displayVal;
             displayVal = "0";
             displayValElement.innerText = displayVal;
-            evalStringArray.push(pendingVal);   
+            evalStringArray.push(pendingVal);
             evalStringArray.push('-');
             break;
 
@@ -44,7 +43,7 @@ var performOperation = (clickObj) => {
             pendingVal = displayVal;
             displayVal = "0";
             displayValElement.innerText = displayVal;
-            evalStringArray.push(pendingVal);    
+            evalStringArray.push(pendingVal);
             evalStringArray.push('*');
             break;
 
@@ -52,7 +51,7 @@ var performOperation = (clickObj) => {
             pendingVal = displayVal;
             displayVal = "0";
             displayValElement.innerText = displayVal;
-            evalStringArray.push(pendingVal); 
+            evalStringArray.push(pendingVal);
             evalStringArray.push('/');
             break;
 
@@ -99,8 +98,7 @@ decimalBtn.onclick = () => {
     displayValElement.innerText = displayVal;
 }
 
-operatorBtn.onclick = () => {
-    let lengthOfDisplayVal = displayVal.length; 
-    if (displayVal[displayVal.length - 1] === "+" || "-" || "*" || "/")
-        displayVal = displayVal.slice(0, lengthOfDisplayVal - 1);
+calcOperatorBtns.onclick = () => {
+    if (pendingVal === "+" || "-" || "*" || "/")
+        displayVal = displayVal.slice(0, displayVal - 1);
 }
