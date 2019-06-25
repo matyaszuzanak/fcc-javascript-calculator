@@ -1,141 +1,142 @@
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Roboto:100');
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                supported by Chrome and Opera */
+  }
+
+  .calc-btn {
+    background-color: silver;
+    color: black;
+    width: 25px;
+    height: 45px;
+    border: 1px solid grey;
+    text-align: center;
+    cursor: pointer;
+    font-size: 32px;
+    font-weight: 100;
+    padding-top: 3px;
+  }
+
+  .calc-btn:hover {
+    background-color: orange;
+  }
+
+  .row {
+    display: table;
+    table-layout: fixed;
+    width: 300px;
+  }
+
+  .column {
+    display: table-cell;
+  }
+
+  #zero {
+    width: 52.666667px;
+  }
+
+  #clear {
+    width: 52.666667px;
+  }
+
+  #display {
+    height: 40px;
+    color: white;
+    text-align: right;
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    border-top: 1px solid grey;
+    font-size: 48px;
+    background-color: rgb(88, 88, 88);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 12px;
+    border-radius: 7px 7px 0 0;
+  }
+
+  .calc-btn-operator {
+    background-color: orange;
+    color: white;
+  }
+
+  .calc-btn-operator:hover {
+    background-color: black;
+    color: white;
+  }
+
+  h1 {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  #equals {
+    border-radius: 0 0 7px 0;
+  }
+
+  #calc-parent {
+    margin-left: calc(50% - 150px);
+  }
+</style>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" type="text/css" href="App.css" />
   <title>JavaScript Calculator</title>
+  <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 
 <body>
   <h1>JavaScript Calculator</h1>
   <div id="calc-parent">
     <div class="row">
-      <div class="column" id="calc-display-val">0</div>
+      <div class="column" id="display">0</div>
     </div>
     <div class="row">
-      <div class="calc-btn column" id="calc-clear">AC</div>
+      <div class="calc-btn column" id="clear">AC</div>
       <div class="calc-btn column" id="calc-backspace">&#8676;</div>
-      <div class="calc-btn calc-btn-operator column" id="calc-divide">&#247;</div>
+      <div class="calc-btn calc-btn-operator column" id="divide">&#247;</div>
     </div>
     <div class="row">
       <div class="calc-btn calc-btn-num column" id="seven">7</div>
       <div class="calc-btn calc-btn-num column" id="eight">8</div>
       <div class="calc-btn calc-btn-num column" id="nine">9</div>
-      <div class="calc-btn calc-btn-operator column" id="calc-multiply">x</div>
+      <div class="calc-btn calc-btn-operator column" id="multiply">x</div>
     </div>
     <div class="row">
       <div class="calc-btn calc-btn-num column" id="four">4</div>
       <div class="calc-btn calc-btn-num column" id="five">5</div>
       <div class="calc-btn calc-btn-num column" id="six">6</div>
-      <div class="calc-btn calc-btn-operator column" id="calc-minus">-</div>
+      <div class="calc-btn calc-btn-operator column" id="subtract">-</div>
     </div>
     <div class="row">
       <div class="calc-btn calc-btn-num column" id="one">1</div>
       <div class="calc-btn calc-btn-num column" id="two">2</div>
       <div class="calc-btn calc-btn-num column" id="three">3</div>
-      <div class="calc-btn calc-btn-operator column" id="calc-plus">+</div>
+      <div class="calc-btn calc-btn-operator column" id="add">+</div>
     </div>
     <div class="row">
       <div class="calc-btn calc-btn-num column" id="zero">0</div>
-      <div class="calc-btn column" id="calc-decimal">.</div>
+      <div class="calc-btn column" id="decimal">.</div>
       <div class="calc-btn calc-btn-operator column" id="equals">=</div>
     </div>
   </div>
 
-  <script var decimalBtn=document.getElementById("calc-decimal"); var clearBtn=document.getElementById("calc-clear");
-    var backspaceBtn=document.getElementById("calc-backspace"); var displayValElement=document.getElementById("calc-display-val");
-    var displayVal="0" ; var pendingVal; var evalStringArray=[]; var calcNumBtns=document.getElementsByClassName("calc-btn-num");
-    var calcOperatorBtns=document.getElementsByClassName("calc-btn-operator"); var updateDisplayVal=(clickObj)=> {
-        var btnText = clickObj.target.innerText;
-
-        if (displayVal === "0")
-          displayVal = "";
-        displayVal += btnText;
-        displayValElement.innerText = displayVal;
-      }
-
-      var performOperation = (clickObj) => {
-        var operator = clickObj.target.innerText;
-
-        switch (operator) {
-          case '+':
-            pendingVal = displayVal;
-            displayVal = "0";
-            displayValElement.innerText = displayVal;
-            evalStringArray.push(pendingVal);
-            evalStringArray.push('+');
-            break;
-
-          case '-':
-            pendingVal = displayVal;
-            displayVal = "0";
-            displayValElement.innerText = displayVal;
-            evalStringArray.push(pendingVal);
-            evalStringArray.push('-');
-            break;
-
-          case 'x':
-            pendingVal = displayVal;
-            displayVal = "0";
-            displayValElement.innerText = displayVal;
-            evalStringArray.push(pendingVal);
-            evalStringArray.push('*');
-            break;
-
-          case '÷':
-            pendingVal = displayVal;
-            displayVal = "0";
-            displayValElement.innerText = displayVal;
-            evalStringArray.push(pendingVal);
-            evalStringArray.push('/');
-            break;
-
-          case '=':
-            evalStringArray.push(displayVal);
-            let evaluation = eval(evalStringArray.join(' '));
-            displayVal = evaluation + '';
-            displayValElement.innerText = displayVal;
-            evalStringArray = [];
-            break;
-
-          default:
-            break;
-        }
-      }
-
-      for (let i = 0; i < calcNumBtns.length; i++) {
-        calcNumBtns[i].addEventListener("click", updateDisplayVal, false);
-      }
-      for (let i = 0; i < calcOperatorBtns.length; i++) {
-        calcOperatorBtns[i].addEventListener("click", performOperation, false);
-      }
-
-      clearBtn.onclick = () => {
-        displayVal = "0";
-        pendingVal = undefined;
-        evalStringArray = [];
-        displayValElement.innerHTML = displayVal;
-      }
-
-      backspaceBtn.onclick = () => {
-        let lengthOfDisplayVal = displayVal.length;
-        displayVal = displayVal.slice(0, lengthOfDisplayVal - 1);
-
-        if (displayVal === "")
-          displayVal = "0";
-
-        displayValElement.innerText = displayVal;
-      }
-
-      decimalBtn.onclick = () => {
-        if (!displayVal.includes("."))
-          displayVal += ".";
-        displayValElement.innerText = displayVal;
-      }
-
-
-
-      src = "https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js" ></script>
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 </body>
 
 </html>
