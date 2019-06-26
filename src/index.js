@@ -25,10 +25,11 @@ var performOperation = (clickObj) => {
     switch (operator) {
         case '+':
             pendingVal = displayVal;
-            displayVal = "0"
+            displayVal = "0";
             displayValElement.innerText = displayVal;
             evalStringArray.push(pendingVal);
             evalStringArray.push('+');
+
             break;
 
         case '-':
