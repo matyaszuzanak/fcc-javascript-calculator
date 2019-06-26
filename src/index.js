@@ -99,6 +99,6 @@ decimalBtn.onclick = () => {
 }
 
 calcOperatorBtns.onclick = () => {
-    if (evalStringArray.length - 1 === "+" || "-" || "*" || "/")
-        evalStringArray = evalStringArray.slice(0, evalStringArray - 1);
+    if (pendingVal.includes("+" || "-" || "x" || "÷"))
+        displayVal = "HABUKA!";
 }
