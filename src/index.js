@@ -1,6 +1,6 @@
 var decimalBtn = document.getElementById("decimal");
 var clearBtn = document.getElementById("clear");
-var backspaceBtn = document.getElementById("calc-backspace");
+var backspaceBtn = document.getElementById("backspace");
 var displayValElement = document.getElementById("display");
 
 var calcNumBtns = document.getElementsByClassName("calc-btn-num");
@@ -96,9 +96,4 @@ decimalBtn.onclick = () => {
     if (!displayVal.includes("."))
         displayVal += ".";
     displayValElement.innerText = displayVal;
-}
-
-calcOperatorBtns.onclick = () => {
-    if (pendingVal.includes("+" || "-" || "x" || "÷"))
-        displayVal = "HABUKA!";
 }
